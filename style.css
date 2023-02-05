@@ -1,0 +1,124 @@
+/* form {
+    border: 2px solid black;
+    background-image: linear-gradient(135deg, #71b7e6, #9b59e6);
+    margin: auto;
+    width: 40%;
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+  
+}
+#output{
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid black;
+
+}
+
+tr,td,th{
+    width: 300px;
+    text-align: center;
+
+}
+*/
+body{
+    background-image: linear-gradient(135deg, #355366, #421a6f); 
+    background-color: #2768da;
+}
+  
+btns{
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  left:70%;
+  top:25px;
+}
+#home{
+  margin-right: 5px;
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+#contact{
+  margin-right: 5px;
+  padding: 10px 15px;
+  background-color: #245726;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+#about{
+  margin-right: 5px;
+  padding: 10px 20px;
+  background-color: #0e1a0f;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+#signup{
+  margin-right: 5px;
+  padding: 10px 15px;
+  background-color: #36347e;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+#login{
+  margin-right: 5px;
+  padding: 10px 20px;
+  background-color: #b4409d;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+
+form {
+    align-content: left;
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #480707;
+    border-radius: 10px;
+
+}
+input[type="text"], input[type="email"], input[type ="tel"],input[type ="password"],input[type ="date"], textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+input[type="submit"] {
+    width: 100%;
+    background-color: #275c28;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+tr,td,th{
+  color:white;
+  width: 300px;
+  text-align: center;
+
+}

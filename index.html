@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <br>
+    <header>
+        <img src="https://www.investwellonline.com/images/iwlogo.svg" alt="vishal Vashisht">
+        <btns> 
+            <button id="home">Home</button>
+            <button id="about">About</button>
+            <button id="contact">Contact Us </button>
+            <button id="signup">Sign Up</button> 
+            <button id="login">Log In</button>
+        </btns>
+    </header>
+    <hr size=5px noshade color=#f1dac4>
+    <!-- <h1> <center>Registration Form by <em>Vishal Vashisht</em></center></h1> -->
+    <br>
+    <div class="vishal">
+    <form id="signup-form" style="display:none">
+        <label for="element1">First Name:</label>
+        <input type="text" id="element1" placeholder="Enter your first name" name="element1"><br><br>
+        
+        <label for="element2">Last Name:</label>
+        <input type="text" id="element2" placeholder="Enter your last name" name="element2"><br><br>
+        
+        <label for="element3">Phone Number:</label>
+        <input type="tel" id="element3" placeholder="Enter your phone number" name="element3"><br><br>
+        
+        <label for="element4">Gender:</label>
+        <input type="text" id="element4" placeholder="Enter your gender" name="element4"><br><br>
+        
+        <label for="element5">Email:</label>
+        <input type="email" id="element5" placeholder="Enter your email" name="element5"><br><br>
+        
+        <label for="element6">Password:</label>
+        <input type="password" id="element6" placeholder="Enter the password" name="element6"><br><br>
+        <input type="submit" value="Submit">
+        
+      </form>
+
+      <form id="login-form" style="display:none">
+        <h2>Login</h2>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      </div>
+      <br>
+      <div class="container" style="display:none" id="block"> 
+        
+      </div>
+
+
+      <button id="print">Print Data</button>
+      <!-- <div id="output"></div> -->
+      
+      <table>
+        <tr><th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+        <tbody id="printArray"></tbody>
+      </table>
+      <script src="form.js"></script>
+
+</body>
+</html>
