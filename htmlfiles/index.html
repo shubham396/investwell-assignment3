@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha-256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <br>
+    <header>
+        <img src="https://www.investwellonline.com/images/iwlogo.svg" alt="vishal Vashisht">
+        <btns> 
+            <button id="home">Home</button>
+            <button id="about">About</button>
+            <button id="contact">Contact Us </button>
+            <button id="signup">Sign Up</button> 
+            <button id="login">Log In</button>
+        </btns>
+    </header>
+    <hr size=5px noshade color=#f1dac4>
+    <!-- <h1> <center>Registration Form by <em>Vishal Vashisht</em></center></h1> -->
+    <br>
+    <div class="vishal">
+    <form id="signup-form"  method ="POST"  style="display:block">
+        <label for="element1">First Name:</label>
+        <input type="text" id="element1" placeholder="Enter your first name" name="element1"><br><br>
+        
+        <label for="element2">Last Name:</label>
+        <input type="text" id="element2" placeholder="Enter your last name" name="element2"><br><br>
+        
+        <label for="element3">Phone Number:</label>
+        <input type="tel" id="element3" placeholder="Enter your phone number" name="element3"><br><br>
+        
+        <label for="element4">Gender:</label>
+        <input type="text" id="element4" placeholder="Enter your gender" name="element4"><br><br>
+        
+        <label for="element5">Email:</label>
+        <input type="email" id="element5" placeholder="Enter your email" name="element5"><br><br>
+        
+        <label for="element6">Password:</label>
+        <input type="password" id="element6" placeholder="Enter the password" name="element6"><br><br>
+        <input type="submit" value="Submit">
+
+        <button onclick="datashow()" type="submit">Submit123</button>
+        <!-- <button onclick="datagiven()" type="submit">posted submit</button> -->
+        <input type="submit" value="Submit" onclick="datagiven()" >
+      </form>
+
+      <form id="login-form" style="display:none">
+        <h2>Login</h2>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button onclick="datashow()" type="submit">Submit</button>
+      </form>
+      </div>
+      <br>
+      <div class="container" style="display:none" id="block"> 
+        
+      </div>
+
+
+      <button id="print">Print Data</button>
+      
+
+      <!-- <div id="output"></div> -->
+      
+      <table>
+        <tr><th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+        <tbody id="printArray"></tbody>
+      </table>
+      <script src="form.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script>
+
+
+      function datashow() {
+        $(document).ready(function () {
+        $.ajax({
+          url: "http://localhost:3001/user",
+          type: "GET",
+          dataType : "JSON",
+          success: function (result) {
+            console.log(result);
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        })
+        })
+      }
+    
+
+      
+      </script>
+
+</body>
+</html>
