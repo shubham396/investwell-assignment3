@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha-256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <br>
+    <header>
+        <img src="https://www.investwellonline.com/images/iwlogo.svg" alt="vishal Vashisht">
+        <btns> 
+            <button id="home">Home</button>
+            <button id="about">About</button>
+            <button id="contact">Contact Us </button>
+            <button id="signup">Sign Up</button> 
+            <button id="login">Log In</button>
+        </btns>
+    </header>
+    <hr size=5px noshade color=#f1dac4>
+    8
+    <br>
+    <div class="vishal">
+    <form id="signup-form"  method ="POST"  style="display:block">
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" placeholder="Enter your first name" name="first_name"><br><br>
+        
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" placeholder="Enter your last name" name="last_name"><br><br>
+        
+        <label for="phone_number">Phone Number:</label>
+        <input type="tel" id="phone_number" placeholder="Enter your phone number" name="phone_number"><br><br>
+        
+        <label for="gender">Gender:</label>
+        <input type="text" id="gender" placeholder="Enter your gender" name="gender"><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email" name="email"><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter the password" name="password"><br><br>
+        <input type="submit" value="Submit" >
+
+        
+        <label for="deletedata">deletedata</label>
+        <input type="deletedata" id="deleteUserData" placeholder="enter the delete name" name="deleted_name"><br><br>
+
+        <!-- <label for="updatedata">update data</label>
+        <input type="updatedata" id="updateUserData" placeholder="enter the updated number" name="Update_name"><br><br>
+         -->
+<!-- 
+        <button onclick="datashow()" type="submit">Submit123</button> -->
+        <!-- <button onclick="datagiven()" type="submit">posted submit</button>  -->
+        <!-- <input type="submit" value="Get Data"  onclick="datashow()" > -->
+        <button onclick="datashow()">Get Data</button>
+        <button id="delete-btn">delete data</button>
+        <!-- <button id="update-btn">updated data</button> -->
+      </form>
+
+      <form id="login-form" style="display:none">
+        <h2>Login</h2>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <!-- <button onclick="datashow()" type="submit">Submit</button> -->
+      </form>
+      </div>
+      <br>
+      <div class="container" style="display:none" id="block"> 
+        
+      </div>
+
+
+      <button id="print">Print Data</button>
+      
+
+      <!-- <div id="output"></div> -->
+      
+      <table id="mytable">
+        <tr><th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+        <tbody id="printArray"></tbody>
+      </table>
+      <script src="form.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script>
+
+
+      //)
+      //}
+      function datashow() {
+    // $(document).ready(function () {
+    $.ajax({
+      url: "http://localhost:9001/user",
+      type: "GET",
+    
+      success: function (result) {
+        console.log("get api");
+        console.log(result);
+        var str="";
+        
+        for(let i=0;i<result.length;i++){
+          let obj1 = result[i];
+
+        str+="<tr><td>" + obj1.first_name + "</td>";
+        str+="<td>" + obj1.last_name + "</td>";
+        str+="<td>" + obj1.phone_number + "</td>";
+        str+="<td>" + obj1.gender + "</td>";
+        str+="<td>" + obj1.email + "</td>";
+        str+="<td>" + obj1.password + "<br></td></tr> ";
+        }
+        document.getElementById("mytable").innerHTML=str;
+      },
+      error: function (error) {
+        console.log(error);
+      }
+    })
+    }
+
+      
+      </script>
+
+</body>
+</html>
