@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express();
-const port = 9001;
+const port = 3001;
 const mysql = require('mysql2');
 const userRoute = require('./backend/routes/userroutes');
 
@@ -35,8 +35,8 @@ app.get('/', function(req, res){
 
 
 
-app.listen(9001, () => {
+app.listen(3001, () => {
     
-    console.log("on port 8001")
+    console.log("on port 2001")
 
 });

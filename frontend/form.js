@@ -1,5 +1,4 @@
 const form = document.querySelector("form");
-const printArrayButton = document.querySelector("#print");
 const output = document.querySelector("#printArray");
 // const delBtn = document.querySelector("#del_btn");
 // const dingdong = document.querySelector("#login");
@@ -17,13 +16,71 @@ document.getElementById("login").addEventListener('click', ()=>{
     document.getElementById("signup-form").style.display = "none"; 
 })
 
+document.getElementById("loginBtn").addEventListener("click",loginuser);
 
-document.getElementById("login-form").addEventListener("submit", function(event) {
-  event.preventDefault();
-  var username = document.getElementById("username").value;
-  var password = document.getElementById("password").value;
-  validation(username);
-}); 
+
+function loginuser(e){
+// document.getElementById("login-form").addEventListener('click', ()=>{  
+  e.preventDefault();
+  console.log("test");
+  var username = document.getElementById("username1").value;
+  var password = document.getElementById("password1").value;
+  // validation(username);
+
+//newly tabla 
+let waxi= { username , password};
+  
+// console.log(waxi);
+$.ajax({
+  
+  url: "http://localhost:3001/signin",
+  type: "POST",
+  data : waxi,
+  success: function(result){
+    
+    console.log("hello",result);
+    if(typeof result ==="string"){
+      alert(result);
+    }
+    else{
+      let str=
+      typeof result!="string" > 0
+      ? `<tr class = "header">
+      <th>Name</th>
+      <th>last name</th>
+      <th>phone_number</th>
+      <th>gender</th>
+      <th>Email</th>
+      <th>password</th></tr>` 
+      :"NO data in databse";
+
+      str += `<tr>
+      <td>${result.first_name}</td>
+      <td>${result.last_name}</td>
+    
+      <td>${result.phone_number}</td>
+    
+      <td>${result.gender}</td>
+    
+      <td>${result.email}</td>
+       
+      </tr>`;
+
+      const output = document.getElementById("login-table");
+      output.innerHTML=str;
+
+      }
+
+  },
+  error: function(error){
+    console.log(error);
+  }
+})
+}
+
+
+
+
 
 
 
@@ -31,6 +88,7 @@ let secondaryArray = [];
 let secondaryMap = new Map();
 
 form.addEventListener("submit", (event) => {
+
   event.preventDefault();
 
   let obj = {
@@ -39,13 +97,22 @@ form.addEventListener("submit", (event) => {
     phone_number : document.querySelector("#phone_number").value,
     gender : document.querySelector("#gender").value,
     email : document.querySelector("#email").value,
-    password : document.querySelector("#password").value
+    password : document.querySelector("#password").value ,
+    confirmpassword : document.querySelector("#confirmpassword").value
   }
-  
-  // console.log(obj);
+// console.log("hello kingsta");
+  if(obj.password == obj.confirmpassword){
+  console.log("kingsta ")
+  console.log(obj);
   secondaryArray.push(obj);
   secondaryMap.set(document.querySelector("#email").value, obj)
   datagiven(obj);
+  }
+  else {
+    console.log("password and confirm pasword is not match  ");
+    alert("password not match");
+  }
+  
 });
 
 
@@ -91,7 +158,7 @@ document.getElementById("delete-btn").addEventListener("click", (event) => {
 
 console.log("hii");
   $.ajax({
-    url: "http://localhost:9001/delete",
+    url: "http://localhost:3001/delete",
     type: "POST",
     data : ab,
     success: function(result){
@@ -145,7 +212,7 @@ function validation(username){
 
 
 // Printing Data
-printArrayButton.addEventListener("click", () => {
+
 // let str = '';
 // for(let i=0; i<secondaryArray.length; i++){
 //   let obj1 = secondaryArray[i];
@@ -157,25 +224,18 @@ printArrayButton.addEventListener("click", () => {
 //   str+="<td>" + obj1.email + "</td>";
 //   str+="<td>" + obj1.password + "<br></td></tr> ";
 // }
-output.innerHTML = str;
-document.querySelector("#first_name").value="";
-document.querySelector("#last_name").value="";
-document.querySelector("#phone_number").value="";
-document.querySelector("#gender").value="";
-document.querySelector("#email").value="";
-document.querySelector("#password").value="";
-});
 
-// delBtn.addEventListener("click",()=>{
-//   deleting();
-// })
+deleteUserData.addEventListener("click",()=>{
+  deleting();
+})
+
 
 
 function datagiven(user) {
-  console.log("hhhhh")
+  console.log("hello i am shubham")
   //$(document).ready(function () {
     $.ajax({
-      url: "http://localhost:9001/userpost",
+      url: "http://localhost:3001/userpost",
       type: "POST",
       data : user,
       
@@ -186,7 +246,7 @@ function datagiven(user) {
     console.log(error);
   }
     })
-  }//)
+  }
 //}
 
 // function dataupdate(user){

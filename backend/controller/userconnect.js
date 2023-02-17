@@ -1,14 +1,16 @@
 // const control = require("../routes/userroutes");
 
-const {servicesGetAllData,servicesPostAllData, servicesdeletedata, servicesupdatepatch} = require("../services/userservice");
+const {servicesGetAllData,servicesPostAllData, servicesdeletedata, servicesupdatepatch, signGetAllData} = require("../services/userservice");
 
 const controlFetchData=(req,res) => {
     console.log("hello");
-    const req1 = servicesGetAllData(function(err,result){
-      return res.send(result);
-    });
-     return req1; 
-  };
+    const req1 = servicesGetAllData();
+
+      req1.then((data)=>{
+        res.send(data);
+      })
+    
+  }
 
   const controlPostData=(req,res) => {
         const newUser = req.body;
@@ -27,6 +29,50 @@ const controlFetchData=(req,res) => {
     return servicesupdatepatch(data);
   }
 
+  // In async and await
+  const signFetchData= async (req,res) => {
+    // console.log(req.body);
+    const value1 = req.body;
+    console.log("hell");
+    const req1 = await signGetAllData(value1);
+    
+    // console.log("hello boldo ji");
+    //  if(req1.length==0){
+    //   res.send("No user found!");
+
+    // }
+    // if (req1[0].password === value1.password ){
+    //   console.log("mai yaha tu kahan ")
+if(req1.length != 0){
+      let senddata = {
+        first_name : req1[0].first_name,
+        last_name : req1[0].last_name,
+        phone_number : req1[0].phone_number,
+        gender : req1[0].gender,
+        email : req1[0].email 
+
+
+      
+      };
+      res.send(senddata);
+    }
+    else {
+      res.send("Incorrect password credentials");
+    }
+  }  
+
+//promise mai hai yeh 
+  // const signFetchData=(req,res) => {
+  //   // console.log(req.body);
+  //   const value1 = req.body;
+  //   console.log("hell");
+  //   const req1 = signGetAllData(value1);
+  //   //  console.log(res);
+  //  req1.then((data)=>{
+  //       res.send(data);
+  //     })
+    
+  // }  
   
-module.exports = {controlFetchData,controlPostData,controldeletedata,controlupdatepatch};
+module.exports = {controlFetchData,controlPostData,controldeletedata,controlupdatepatch , signFetchData};
  
