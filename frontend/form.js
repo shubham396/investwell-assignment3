@@ -101,17 +101,17 @@ form.addEventListener("submit", (event) => {
     confirmpassword : document.querySelector("#confirmpassword").value
   }
 // console.log("hello kingsta");
-  if(obj.password == obj.confirmpassword){
+ // if(obj.password == obj.confirmpassword){
   console.log("kingsta ")
   console.log(obj);
   secondaryArray.push(obj);
   secondaryMap.set(document.querySelector("#email").value, obj)
   datagiven(obj);
-  }
-  else {
-    console.log("password and confirm pasword is not match  ");
-    alert("password not match");
-  }
+  //}
+  // else {
+  //   console.log("password and confirm pasword is not match  ");
+  //   alert("password not match");
+  // }
   
 });
 

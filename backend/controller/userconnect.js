@@ -1,5 +1,9 @@
 // const control = require("../routes/userroutes");
 
+const { details } = require("@hapi/joi/lib/errors");
+
+const {validateSignup } = require('../validation123/validation');
+
 const {servicesGetAllData,servicesPostAllData, servicesdeletedata, servicesupdatepatch, signGetAllData} = require("../services/userservice");
 
 const controlFetchData=(req,res) => {
@@ -11,12 +15,24 @@ const controlFetchData=(req,res) => {
       })
     
   }
-
-  const controlPostData=(req,res) => {
+// main post -->
+  const controlPostData= (req,res) => {
         const newUser = req.body;
 
         return servicesPostAllData(newUser);
   } 
+
+  //--> yaha tak 
+// yaha se time pass hai 
+  // const controlPostData=(req,res) => {
+  //   const {error, value} =validateSignup(req.body);
+
+    // if(error) {
+    //   console.log(error);
+    //   return res.send(error,details);
+    // }
+
+// } yaha tak 
 
   const controldeletedata = (req,res) => {
     console.log("shubha")

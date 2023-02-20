@@ -3,11 +3,11 @@ const express = require("express");
 const router = express.Router();
 
 ///////
-
+const {middleware, loginmiddle, deletemiddleware} = require("../validation123/validation");
 
 const bodyParser = require("body-parser");
 
-const { controlFetchData, controlPostData, controldeletedata, controlupdatepatch, signFetchData } = require("../controller/userconnect");
+const { controlFetchData, controlPostData, controldeletedata, controlupdatepatch, signFetchData  } = require("../controller/userconnect");
 
 
 
@@ -15,16 +15,16 @@ const { controlFetchData, controlPostData, controldeletedata, controlupdatepatch
 router.get('/user', controlFetchData)
 
 
-router.post('/userpost', controlPostData)
+router.post('/userpost',middleware, controlPostData)
 
 //delete karne ke liye 
 
-router.post('/delete', controldeletedata)
+router.post('/delete', deletemiddleware ,controldeletedata)
 
 router.patch('/update', controlupdatepatch)
 
 
-router.post('/signin', signFetchData)
+router.post('/signin',loginmiddle, signFetchData)
 
 
 
