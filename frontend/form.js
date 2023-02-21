@@ -9,7 +9,10 @@ const output = document.querySelector("#printArray");
 
 document.getElementById("signup").addEventListener('click', ()=>{
     document.getElementById("signup-form").style.display = "block";
+    
     document.getElementById("login-form").style.display = "none";
+    document.getElementById("login-table").style.display = "none";
+    document.getElementById("update-form").style.display="none";
 })
 document.getElementById("login").addEventListener('click', ()=>{
     document.getElementById("login-form").style.display = "block";
@@ -23,8 +26,10 @@ function loginuser(e){
 // document.getElementById("login-form").addEventListener('click', ()=>{  
   e.preventDefault();
   console.log("test");
+  document.getElementById("update123").style.display="block";
   var username = document.getElementById("username1").value;
   var password = document.getElementById("password1").value;
+
   // validation(username);
 
 //newly tabla 
@@ -55,7 +60,7 @@ $.ajax({
       :"NO data in databse";
 
       str += `<tr>
-      <td>${result.first_name}</td>
+      <td>${result.username}</td>
       <td>${result.last_name}</td>
     
       <td>${result.phone_number}</td>
@@ -92,13 +97,13 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   let obj = {
-    first_name : document.querySelector("#first_name").value,
+    username : document.querySelector("#username").value,
     last_name : document.querySelector("#last_name").value,
     phone_number : document.querySelector("#phone_number").value,
     gender : document.querySelector("#gender").value,
     email : document.querySelector("#email").value,
     password : document.querySelector("#password").value ,
-    confirmpassword : document.querySelector("#confirmpassword").value
+   // confirmpassword : document.querySelector("#confirmpassword").value
   }
 // console.log("hello kingsta");
  // if(obj.password == obj.confirmpassword){
@@ -130,7 +135,7 @@ form.addEventListener("submit", (event) => {
 //       for(let i=0;i<result.length;i++){
 //         let obj1 = result[i];
 
-//       str+="<tr><td>" + obj1.first_name + "</td>";
+//       str+="<tr><td>" + obj1.username + "</td>";
 //       str+="<td>" + obj1.last_name + "</td>";
 //       str+="<td>" + obj1.phone_number + "</td>";
 //       str+="<td>" + obj1.gender + "</td>";
@@ -150,10 +155,10 @@ form.addEventListener("submit", (event) => {
 document.getElementById("delete-btn").addEventListener("click", (event) => {
   event.preventDefault();
 
-  let first_name = document.getElementById("deleteUserData").value;
+  let username = document.getElementById("deleteUserData").value;
 
   const ab ={
-    first_name
+    username
   }
 
 console.log("hii");
@@ -175,10 +180,10 @@ console.log("hii");
 // document.getElementById("update-btn").addEventListener("click", (event) => {
 //   event.preventDefault();
 
-//   let first_name = document.getElementById("updateUserData").value;
+//   let username = document.getElementById("updateUserData").value;
 
 //   const cd= {
-//     first_name
+//     username
 //   }
 
 //   console.log("")
@@ -195,6 +200,57 @@ console.log("hii");
 //   } 
 //   })
 //});
+
+document.getElementById("update123").addEventListener("click", (event) => {
+  event.preventDefault();
+  document.getElementById("update-form").style.display="block" ;
+  document.getElementById("login-form").style.display="none";
+     
+
+  
+})
+
+// function apiupdate()
+    // let username = document.getElementById("update").value;
+    document.getElementById("Update").addEventListener("click", (event) => {
+       event.preventDefault();
+       
+
+
+  let ibj = {
+    username : document.querySelector("#username2").value,
+    last_name : document.querySelector("#last_name2").value,
+    phone_number : document.querySelector("#phone_number2").value,
+    gender : document.querySelector("#gender2").value,
+    email : document.querySelector("#email2").value,
+    password : document.querySelector("#password2").value ,
+    //confirmpassword : document.querySelector("#confirmpassword").value
+  }
+
+  console.log("update patch  ")
+  // console.log(ibj);
+  secondaryArray.push(ibj);
+  secondaryMap.set(document.querySelector("#email").value, ibj)
+  // datagiven(ibj);
+
+
+  $.ajax({
+    url: "http://localhost:3001/update",
+    type: "POST",
+    data : ibj,
+    
+success: function(data){
+    console.log('success',data);                    
+},
+error: function(error){
+  console.log(error);
+}
+  })
+}
+    )
+  
+
+
 
 
  
@@ -217,7 +273,7 @@ function validation(username){
 // for(let i=0; i<secondaryArray.length; i++){
 //   let obj1 = secondaryArray[i];
 
-//   str+="<tr><td>" + obj1.first_name + "</td>";
+//   str+="<tr><td>" + obj1.username + "</td>";
 //   str+="<td>" + obj1.last_name + "</td>";
 //   str+="<td>" + obj1.phone_number + "</td>";
 //   str+="<td>" + obj1.gender + "</td>";

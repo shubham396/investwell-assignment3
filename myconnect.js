@@ -35,8 +35,8 @@ app.get('/', function(req, res){
 
 
 
-app.listen(3001, () => {
+app.listen(port, () => {
     
-    console.log("on port 2001")
+    console.log(`on port ${port}`)
 
 });

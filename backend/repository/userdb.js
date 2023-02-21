@@ -45,12 +45,12 @@ function deletedata(sql) {
 
 function updatepatch(sql) {
 
-    connection.query(sql, [user], (err, rows) => {
+    connection.query(sql, (err, res) => {
         if (err) {
             console.log(err);
         }
         else {
-            res.send(rows)
+            console.log(res);
         }
     })
 }

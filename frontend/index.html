@@ -26,8 +26,8 @@
     <br>
     <div class="vishal">
     <form id="signup-form"  method ="POST"  style="display:block">
-        <label for="first_name">First Name:</label>
-        <input type="text" id="first_name" placeholder="Enter your first name" name="first_name"><br><br>
+        <label for="username">Username :</label>
+        <input type="text" id="username" placeholder="Enter your first name" name="username"><br><br>
         
         <label for="last_name">Last Name:</label>
         <input type="text" id="last_name" placeholder="Enter your last name" name="last_name"><br><br>
@@ -63,6 +63,37 @@
         <!-- <button id="update-btn">updated data</button> -->
       </form>
 
+      <form  name="update"   style="display:none" id="update-form">
+        <label for="username"> Enter Username to update :</label>
+        <input type="text" id="username2" placeholder="Enter your User name" name="username"><br><br>
+        
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name2" placeholder="Enter your last name" name="last_name"><br><br>
+        
+        <label for="phone_number">Phone Number:</label>
+        <input type="tel" id="phone_number2" placeholder="Enter your phone number" name="phone_number"><br><br>
+        
+        <label for="gender">Gender:</label>
+        <input type="text" id="gender2" placeholder="Enter your gender" name="gender"><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email2" placeholder="Enter your email" name="email"><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password2" placeholder="Enter the password" name="password"><br><br>
+
+<!--         
+        <input type="submit" value="Submit" > -->
+
+        <!-- <button onclick="">Get Data</button> -->
+        
+        <!-- <label for="updatedata">Updated Value</label> -->
+        <!-- <input type="updatedata" id="Update" placeholder="enter the update username " name="Update_name"><br><br> -->
+
+        <button id="Update">Update data</button>
+        
+    </form>
+
       <form id="login-form" style="display:none">
         <h2>Login</h2>
         <div class="form-group">
@@ -82,9 +113,11 @@
         
 
 
-        
+        <button id="update123" style="display:none"  >update</button>
         <!-- <button onclick="datashow()" type="submit">Submit</button> -->
       </form>
+
+      
       <table id="login-table">
         <!-- <thead>
 
@@ -170,7 +203,7 @@
         for(let i=0;i<result.length;i++){
           let obj1 = result[i];
 
-        str+="<tr><td>" + obj1.first_name + "</td>";
+        str+="<tr><td>" + obj1.username + "</td>";
         str+="<td>" + obj1.last_name + "</td>";
         str+="<td>" + obj1.phone_number + "</td>";
         str+="<td>" + obj1.gender + "</td>";

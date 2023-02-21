@@ -21,7 +21,7 @@ router.post('/userpost',middleware, controlPostData)
 
 router.post('/delete', deletemiddleware ,controldeletedata)
 
-router.patch('/update', controlupdatepatch)
+router.post('/update', controlupdatepatch)
 
 
 router.post('/signin',loginmiddle, signFetchData)

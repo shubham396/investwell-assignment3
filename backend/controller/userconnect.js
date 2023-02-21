@@ -3,6 +3,7 @@
 const { details } = require("@hapi/joi/lib/errors");
 
 const {validateSignup } = require('../validation123/validation');
+const crypto=require("crypto-js")
 
 const {servicesGetAllData,servicesPostAllData, servicesdeletedata, servicesupdatepatch, signGetAllData} = require("../services/userservice");
 
@@ -42,15 +43,32 @@ const controlFetchData=(req,res) => {
 
   const controlupdatepatch = (req,res) => {
     const data =req.body;
+    console.log("hello buddy",data);
     return servicesupdatepatch(data);
   }
 
   // In async and await
   const signFetchData= async (req,res) => {
+
     // console.log(req.body);
     const value1 = req.body;
     console.log("hell");
     const req1 = await signGetAllData(value1);
+
+    if(req1.length === 0) {
+      console.log("length is zero ");
+    }
+    
+    const decrypted = crypto.AES.decrypt(req1[0].password,'secret key 123' )
+    var passde = decrypted.toString(crypto.enc.Utf8)
+    console.log(passde)
+
+    if(passde != value1.password){
+      return res.send("Invalid credentials!")
+      
+    }
+    else {
+
     
     // console.log("hello boldo ji");
     //  if(req1.length==0){
@@ -59,9 +77,8 @@ const controlFetchData=(req,res) => {
     // }
     // if (req1[0].password === value1.password ){
     //   console.log("mai yaha tu kahan ")
-if(req1.length != 0){
       let senddata = {
-        first_name : req1[0].first_name,
+        username : req1[0].username,
         last_name : req1[0].last_name,
         phone_number : req1[0].phone_number,
         gender : req1[0].gender,
@@ -72,9 +89,7 @@ if(req1.length != 0){
       };
       res.send(senddata);
     }
-    else {
-      res.send("Incorrect password credentials");
-    }
+    
   }  
 
 //promise mai hai yeh 

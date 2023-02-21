@@ -2,7 +2,7 @@ const Joi = require('@hapi/joi');
 
 
 const schema = Joi.object({
-    first_name: Joi.string()
+    username: Joi.string()
         
         .min(3)
         .max(30)
@@ -14,8 +14,8 @@ const schema = Joi.object({
         .max(30)
         .required(),    
 
-    password: Joi.string()
-        .pattern(new RegExp('^[a-zA-Z0-9]@{3,30}$')),
+    password: Joi.string(),
+        // .pattern(new RegExp('^(?=.[A-Za-z])(?=.\d)(?=.[@$!%#?&])[A-Za-z\d@$!%*#?&]{8,}$')),
 
     confirmpassword: Joi.ref('password'),
 
@@ -52,12 +52,13 @@ const schema = Joi.object({
 
 const loginschema =Joi.object({
     username: Joi.string().min(3).max(30).required(),
-    password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}@$')),
+     password: Joi.string(),
+    //  .pattern(new RegExp('^[a-zA-Z0-9]{3,30}@$')),
 
 })
 
 const deleteschema = Joi.object({
-    first_name : Joi.string().min(3).max(30).required(),
+    username : Joi.string().min(3).max(30).required(),
 
 
 })
